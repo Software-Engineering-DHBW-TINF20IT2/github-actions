@@ -1,14 +1,26 @@
-name: Test Action
+name: Build and Run Frontend
 on: [push]
 
 jobs:
     test-job:
-        name: Test Job
+        name: Build and Run Frontend
         runs-on: ubuntu-latest
         
         steps:
           - name: Checkout Repo
             uses: actions/checkout@v2
+            
+          - name: Setup Node.js environment
+            uses: actions/setup-node@v3.6.0
+            with:
+                node-version: '14'
+            run: npm install
+            run: node src/frontend/app.js
+            
+          - name: decoy build
+            run: mkdir dist
+            run: echo "//`date`" > dist/app.js
+            run: cat src/frontend/app.js >> dist/app.js
             
           - name: Print app.js
             run: cat src/frontend/app.js
