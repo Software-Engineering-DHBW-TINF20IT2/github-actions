@@ -1,0 +1,13 @@
+name: Übung 1
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run a command
+      run: echo "Changes were made to the repository"
+      - name: Checkout code
+      uses: actions/checkout@v2
+      - name: Display content  of src/frontend/app.js
+      run: cat src/frontend/app.js
