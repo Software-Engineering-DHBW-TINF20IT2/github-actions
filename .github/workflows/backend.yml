@@ -23,4 +23,4 @@ jobs:
             run: cat src/backend/run.py >> dist/backend.py
             
           - name: Print app.js
-            run: cat src/frontend/backend.py
+            run: cat src/backend/backend.py
