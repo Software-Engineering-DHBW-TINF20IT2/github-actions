@@ -1,0 +1,26 @@
+name: Build and Run Backend
+on: [push]
+
+jobs:
+    test-job:
+        name: Build and Run Backend
+        runs-on: ubuntu-latest
+        
+        steps:
+          - name: Checkout Repo
+            uses: actions/checkout@v2
+            
+          - name: Setup Python
+            uses: actions/setup-python@v4.5.0
+            
+          - name: make builddir
+            run: mkdir dist
+            
+          - name: write date in build
+            run: echo "#`date`" > dist/backend.py
+            
+          - name: show copy rest in build
+            run: cat src/backend/run.py >> dist/backend.py
+            
+          - name: Print app.js
+            run: cat src/frontend/backend.py
