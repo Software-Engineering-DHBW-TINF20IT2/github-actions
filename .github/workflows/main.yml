@@ -14,12 +14,20 @@ jobs:
             uses: actions/setup-node@v3.6.0
             with:
                 node-version: '14'
+                
+          - name: install  node
             run: npm install
+            
+          - name: execute frontend
             run: node src/frontend/app.js
             
-          - name: decoy build
+          - name: make builddir
             run: mkdir dist
+            
+          - name: write date in build
             run: echo "//`date`" > dist/app.js
+            
+          - name: show copy rest in build
             run: cat src/frontend/app.js >> dist/app.js
             
           - name: Print app.js
